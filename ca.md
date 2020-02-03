@@ -33,7 +33,11 @@ This is due week 4 and worth 10%. You must submit:
 - One of your ships should implement a path following behaviour
 - A storyboard for the story in your assignment laying out the different scenes, cameras and behaviours.
 
-The main assignment is due week 12
+## Marking Scheme
+- Complexity - 30%
+- Story - 30%
+- Visuals - 30%
+- Git & documentation - 10%
 
 Rubric
 ======

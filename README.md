@@ -18,9 +18,9 @@
 - [2018-2019](https://github.com/skooter500/GE2-2018-2019)
 	
 ## Assessment Schedule	
-- Week 8 - CA proposal & Git repo
-- Week 9 - Lab Test - 20%
-- Week 12 - CA Submission & Demo - 50%
+- Week 5 - CA proposal & Git repo
+- Week 11 - Lab Test - 20%
+- Week 13 - CA Submission & Demo - 50%
 
 ## Previous Lab Tests
 - https://github.com/skooter500/GE2-Lab-Test-2019
