@@ -25,6 +25,29 @@ public class BigBoid : MonoBehaviour
     [Range(0.0f, 10.0f)]
     public float banking = 0.1f;
 
+    public bool playerSteeringEnabled = false;
+    public float playerForce = 100;
+
+    public float damping = 0.1f;
+
+
+    public Vector3 PlayerSteering()
+    {
+        Vector3 f = Vector3.zero;
+
+        f += Input.GetAxis("Vertical") * transform.forward * playerForce;
+
+        Vector3 projectedRight = transform.right;
+        projectedRight.y = 0;
+        projectedRight.Normalize();
+
+        f += Input.GetAxis("Horizontal") * projectedRight * playerForce * 0.2f;
+
+
+        return f;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -78,6 +101,10 @@ public class BigBoid : MonoBehaviour
         {
             force += Arrive(target);
         }
+        if (playerSteeringEnabled)
+        {
+            force += PlayerSteering();
+        }
         return force;
     }
 
@@ -99,6 +126,8 @@ public class BigBoid : MonoBehaviour
             Vector3 tempUp = Vector3.Lerp(transform.up, Vector3.up + (acceleration * banking), Time.deltaTime * 3.0f);
             transform.LookAt(transform.position + velocity, tempUp);
             //transform.forward = velocity;
+            velocity -= (damping * velocity * Time.deltaTime);
+
 
         }
     }
