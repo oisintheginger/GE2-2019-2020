@@ -36,14 +36,14 @@
 
 ### Part 1 - Path following
 
-Update your fork of the repo with the latest code from the master branch of my repo. To do this, cd to the folder and type:
+Update your fork of the repo with the latest code from the master branch of my repo. To do this, cd to the folder where you have yoru fork cloned and type:
 
 ```
 git checkout master
 git pull upstream master
 ```
 
-This will get the code we wrote last week. You can opep up the scene Seek and you will see the boid that we made that implements seek, arrive and player steering behaviours in the BigBoid.cs class.
+This will get the code we wrote last week. Open the Seek scene and you will see a boid that implements seek, arrive and player steering behaviours in the BigBoid.cs class. Today you can implement a path following behaviour for the boid.
 
 Check out this video:
 
