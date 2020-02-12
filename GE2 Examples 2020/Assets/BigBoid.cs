@@ -30,6 +30,28 @@ public class BigBoid : MonoBehaviour
 
     public float damping = 0.1f;
 
+    public bool pathFollowingEnabled = false;
+    public float waypointDistance = 3;
+    public Path path;
+
+    public Vector3 FollowPath()
+    {
+        Vector3 nextWaypoint = path.NextWaypoint();
+
+        if (!path.looped && path.IsLast())
+        {
+            return Arrive(nextWaypoint);
+        }
+        else
+        {
+            if (Vector3.Distance(transform.position, nextWaypoint) < waypointDistance)
+            {
+                path.AdvanceToNext();
+            }
+            return Seek(nextWaypoint);
+        }
+    }
+
 
     public Vector3 PlayerSteering()
     {
@@ -104,6 +126,11 @@ public class BigBoid : MonoBehaviour
         if (playerSteeringEnabled)
         {
             force += PlayerSteering();
+        }
+
+        if (pathFollowingEnabled)
+        {
+            force += FollowPath();
         }
         return force;
     }
