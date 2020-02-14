@@ -34,6 +34,22 @@ public class BigBoid : MonoBehaviour
     public float waypointDistance = 3;
     public Path path;
 
+    public BigBoid pursueTarget;
+    public bool pursueEnabled;
+    public Vector3 pursueTargetPos;
+
+    public Vector3 Pursue(BigBoid pursueTarget)
+    {
+        float dist = Vector3.Distance(pursueTarget.transform.position, transform.position);
+        float time = dist / maxSpeed;
+
+        pursueTargetPos = pursueTarget.transform.position + pursueTarget.velocity * time;
+
+        return Seek(pursueTargetPos);
+    }
+
+
+
     public Vector3 FollowPath()
     {
         Vector3 nextWaypoint = path.NextWaypoint();
@@ -51,6 +67,8 @@ public class BigBoid : MonoBehaviour
             return Seek(nextWaypoint);
         }
     }
+
+
 
 
     public Vector3 PlayerSteering()
@@ -90,6 +108,12 @@ public class BigBoid : MonoBehaviour
 
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(targetTransform.position, slowingDistance);
+
+        if (pursueEnabled)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(pursueTargetPos, 0.1f);
+        }
     }
 
     Vector3 Arrive(Vector3 target)
@@ -132,6 +156,12 @@ public class BigBoid : MonoBehaviour
         {
             force += FollowPath();
         }
+
+        if (pursueEnabled)
+        {
+            force += Pursue(pursueTarget);
+        }
+
         return force;
     }
 
