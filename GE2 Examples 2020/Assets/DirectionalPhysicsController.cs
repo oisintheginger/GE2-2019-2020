@@ -27,7 +27,7 @@ public class DirectionalPhysicsController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
         RaycastHit rch;
@@ -38,11 +38,10 @@ public class DirectionalPhysicsController : MonoBehaviour
             q = Quaternion.AngleAxis(angle, axis);
         }
 
-        rb.AddForce(Input.GetAxis("Vertical") * (q * transform.forward) * power);
-
-        Debug.DrawLine(transform.position, transform.position + (q * transform.forward) * 5.0f);
-
-
-        rb.AddTorque(Input.GetAxis("Horizontal") * Vector3.up * rotPower * 0.001f);
+        force = Input.GetAxis("Vertical") * (q * transform.forward) * power;
+        rb.AddForce(force);
+        transform.Rotate(Input.GetAxis("Horizontal") * Vector3.up * rotPower);
     }
+
+    public Vector3 force;
 }
