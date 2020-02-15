@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 310266883}
   - component: {fileID: 310266882}
   - component: {fileID: 310266881}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Quad (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 643018551}
   - component: {fileID: 643018556}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -426,8 +426,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eaf9dee942f62840b6321563fafa8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 10
+  power: 20
   rotPower: 50
+  lm:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &1672384481
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +556,7 @@ GameObject:
   - component: {fileID: 1745223268}
   - component: {fileID: 1745223267}
   - component: {fileID: 1745223266}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}

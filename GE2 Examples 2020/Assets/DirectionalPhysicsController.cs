@@ -9,14 +9,14 @@ public class DirectionalPhysicsController : MonoBehaviour
     public float power = 100;
     public float rotPower = 30;
 
-    public Vector3 rotatedForward;
+    Quaternion q = Quaternion.identity;
 
     public LayerMask lm;
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position + Vector3.up, transform.position + rotatedForward * 5);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + (q * transform.forward) * 5.0f);
 
     }
 
@@ -35,12 +35,13 @@ public class DirectionalPhysicsController : MonoBehaviour
         {
             float angle = Vector3.Angle(Vector3.up, rch.normal);
             Vector3 axis = Vector3.Cross(Vector3.up, rch.normal);
-            Quaternion q = Quaternion.AngleAxis(angle, axis);
-
-
-            rotatedForward = q * transform.forward;
-            rb.AddForce(Input.GetAxis("Vertical") * rotatedForward * power);
+            q = Quaternion.AngleAxis(angle, axis);
         }
+
+        rb.AddForce(Input.GetAxis("Vertical") * (q * transform.forward) * power);
+
+        Debug.DrawLine(transform.position, transform.position + (q * transform.forward) * 5.0f);
+
 
         rb.AddTorque(Input.GetAxis("Horizontal") * Vector3.up * rotPower * 0.001f);
     }
