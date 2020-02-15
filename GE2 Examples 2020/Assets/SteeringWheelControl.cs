@@ -85,8 +85,5 @@ public class SteeringWheelControl : MonoBehaviour
                 held = false;
             }            
 		}
-    }//end onTriggerStay()
-
-
-
-}//end main()
+    }    
+}
