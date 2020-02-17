@@ -39,6 +39,7 @@ Create a new scene and make this predator prey simulation. The prey will follow 
 
 [![YouTube](http://img.youtube.com/vi/SqThPN_ogJE/0.jpg)](https://www.youtube.com/watch?v=SqThPN_ogJE)
 
+To draw the "Lazers" you can use Debug.DrawLine from Update 
 
 ## Week 3
 - Pursue
