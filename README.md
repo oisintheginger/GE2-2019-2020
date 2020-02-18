@@ -28,15 +28,28 @@
 - https://github.com/skooter500/GE2-2017-Lab-Test
 - https://github.com/skooter500/GE2-Labtest1-2018
 
+
+## Week 4
+
+### Lab
+
+Update your fork of the course repo to get the Pursue code we wrote in the class on Friday.
+
+Create a new scene and make this predator prey simulation. The prey will follow a path until the predator comes into range. When the predator is is range the prey will attack the predator by shooting at it. It only shoots at the predator if it is inside the field of view. The predator will get close to the prey, but will flee from the prey if the prey attacks it. You can use colliders and then disable and enable certain behaviours to implement the simulation.
+
+[![YouTube](http://img.youtube.com/vi/SqThPN_ogJE/0.jpg)](https://www.youtube.com/watch?v=SqThPN_ogJE)
+
+To draw the "Lazers" you can use Debug.DrawLine from Update 
+
 ## Week 3
 - Pursue
 - Offset
 
-# Lab
+### Lab
 
 ### Part 1 - Path following
 
-Update your fork of the repo with the latest code from the master branch of my repo. To do this, cd to the folder where you have yoru fork cloned and type:
+Update your fork of the repo with the latest code from the master branch of my repo. To do this, cd to the folder where you have your fork cloned and type:
 
 ```
 git checkout master
