@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Valve.VR;
+
 // Control a steering wheel in VR
 
 public class SteeringWheelControl : MonoBehaviour
@@ -12,12 +14,18 @@ public class SteeringWheelControl : MonoBehaviour
 	public Transform Hand;
 	
     private Vector3 oldGrabPoint;
-    private Vector3 handPos;	
-	
+    private Vector3 handPos;
+
+    public SteamVR_Input_Sources handType; // 1
+    public SteamVR_Action_Boolean teleportAction; // 2
+    public SteamVR_Action_Boolean grabAction; // 3
+
     // Update is called once per frame
     void Update()
     {
-        handPos = Hand.position;        
+        handPos = Hand.position;
+
+        //Debug.Log(grabAction.GetState(handType));
     }
 
     public void OnTriggerExit(Collider other)
@@ -45,13 +53,13 @@ public class SteeringWheelControl : MonoBehaviour
 
     private bool CheckButton()
     {
-        // Replace with button handling code
-        return true;
+        return grabAction.GetState(handType);
     }
     
     public void OnTriggerStay(Collider target)
 	{
-        if(target.tag == "Hand") 
+        Debug.Log("Trigger stay: " + target.tag + "\t" + target.gameObject);
+        //if(target.tag == "Hand") 
 		{
             if (CheckButton())
             {
