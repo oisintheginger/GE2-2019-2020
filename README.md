@@ -28,6 +28,38 @@
 - https://github.com/skooter500/GE2-2017-Lab-Test
 - https://github.com/skooter500/GE2-Labtest1-2018
 
+## Week 5
+### Learning Outcomes 
+- Refactor the code we have been writing to use components
+
+### Lab
+- Learn how to refactor a big class that does many things into lots of smaller classes that do one thing each
+
+### Task 1
+- Find some 3D models & art assets for your assignment & get them loaded into a scene in Unity
+- Set up a git repo for your assignment
+
+### Task 2
+
+Out Boid class is getting big so now it's time to refactor the code so that each behaviour is a seperate MonoBehaviour.
+
+Clone/pull the repo for the course
+
+- Make an abstract base class called SteeringBehaviour that extends MonoBehavior
+- Add one abstract method ```public abstract Vector3 Calculate()```
+- Add a public field for *weight* of type float and also add a field for the Boid (the owner of the behaviour)
+- Take each of the behaviours we wrote (seek, arrive, flee, path following, PlayerSteering) and make each of them extend SteeringBehaviour. Do the calculation of the force in Calculate
+- Remove the boolean flags for the behaviours. They are not needed any more. Instead each boid will use whatever behaviours are attached to it.
+- Give the Boid a field of type ```SteeringBehaviour[]```
+- In the setup method of the Boid class, call GetComponents to get all the attached SteeringBehaviours
+- Assign the boid field of each attached behaviour
+- In the Boid Update method, iterate over the activated behaviours and sum the generated forces * the weights
+- This will become more useful when we combine the behaviours together
+
+### Task 3
+
+Try [this lab test from last year](https://github.com/skooter500/GE2-Lab-Test-2019)
+
 
 ## Week 4
 
